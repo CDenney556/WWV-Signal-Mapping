@@ -38,7 +38,7 @@ We used Radio Mobile, a free RF propagation simulation and mapping program by Ro
 
 ## How we selected the test points
 
-Using the state scale heat map, six test locations were selected. The Radio Mobile simulation showed the likely areas of strongest signal. Scadacore RF Path, a free online line of sight tool, was then used to confirm the path between the WWV antenna and each candidate point.
+Using the state scale heat map, five test locations were selected. The Radio Mobile simulation showed the likely areas of strongest signal. Scadacore RF Path, a free online line of sight tool, was then used to confirm the path between the WWV antenna and each candidate point.
 
 | Site name | Position (lat, long) | Distance from WWV | Elevation | Reason for selection |
 |---|---|---:|---:|---|
@@ -47,7 +47,6 @@ Using the state scale heat map, six test locations were selected. The Radio Mobi
 | Arvada, CO | 39.82675, -105.08259 | 94.8 km | [ ] | The last point before North Table Mountain |
 | Golden, CO: CSM intramural field | 39.74992, -105.22568 | 104.4 km | [ ] | The predicted shadow area; adjacent to the laboratory |
 | Golden, CO: Lookout Mountain Mines "M" pullout | 39.74621, -105.23974 | 105.0 km | [ ] | The same distance, but at a higher elevation |
-| [ Add the sixth site ] | [ ] | [ ] | [ ] | [ ] |
 
 ## Test methodology
 
