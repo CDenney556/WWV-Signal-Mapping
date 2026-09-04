@@ -38,14 +38,48 @@ a RF "shadow".
 Utilizing Radio Mobile; a free RF propagation simulation and mapping software by Roger Coude (VE2DBE),
 We determined that there was likely a shadow created from north table mountain.
 
-Radio m
+![Settings for all Radio Mobile simulations](images/WWV Radio Mobile Antenna and Receiver settings.png)
 
-## How we selected the test points
+The above photo is all of the settings that were used for all simulation using Radio Mobile.
 
-[Write the number of sites, the range of distances, and the reason for the
-spacing.]
+![State Wide scale map with Radio Mobile signal simulation overlay](images/WWV Radio Mobile heatmap zoomed out.png)
 
-| Site | Position | Distance from WWV | Reason for selection |
+This photo shows the Radio Mobile signal simulation overlay at the state wide scale.
+
+![City of Golden scale map with Radio Mobile signal simulation overlay](images/WWV Radio Mobile heatmap zoomed in.png)
+
+This photo shows the Radio Mobile signal simulation overlay at the city level scale. This simulation pointed toward the fact
+that north table mountain creates a "RF" shadow or deadzone. 
+
+Using the state wide heatmap, six test locations were selected. Radio Mobile simulation showed the likely areas for strongest signal, 
+then Scada Core RF Path, a free online tool to determine line of sight between two antenna's was used to select points.
+
+| Site Name | Position (Lat/Long) | Distance from WWV | Reason for selection |
 |---|---|---|---|
-| 1 | | | |
-| 2 | | | |
+|Frederick, CO|40.10452096063513, -104.94304029222081|64.34Km|Scada Core RF Path|
+|Layfette, CO|39.9816698215178, -105.06295871223249|77.49Km|Scada Core RF Path|
+|Arvada, CO|39.8267488739129, -105.08258567515914|94.76Km|Scada Core RF Path|
+|Golden, CO CSM Intramural Field|39.74992271582115, -105.22568124018566|104.43Km|Scada Core RF Path|
+|Golden, CO Lookout Mountain Mines M pullout|39.74620930581129, -105.23974371573536|105.03Km|Scada Core RF Path|
+
+##Test methodology
+Equipment used:
+1.RTL SDR
+1.SMA-F to BNC-M to BNC-F to PL-259-M adapters
+1.PL-259-F 5M Cable (Radioddity)
+1.Radioddity HF-009 portable HF antenna
+1.Razer Blade 16"
+1.Bodnar GPS-Disciplined 10MHz Source
+
+Software used:
+1.SDR#
+
+SNR and Absolute delivered power measurements were taken via the RTL-SDR and SDR#, 
+at that same time the data was demodulated to see if any of the voice announcements could be heard.
+The Radioddity HF-009 provides access for the RTL-SDR to the 5MHz frequency.
+Prior to initating testing on the 5MHz band the RTL-SDR was frequency calibrated using the 
+Bodnar GPS-Disciplined 10MHz Source.
+
+Once the antenna was set-up and connected to the SDR, SDR# was then set to 5MHz and 
+IQ samples with gain settings of 20.70, bandwidth of 10kHz, AM Modulation, and sample rate of 2.4 MS/s.
+
