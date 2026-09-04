@@ -42,17 +42,21 @@ Using the state scale heat map, five test locations were selected. The Radio Mob
 
 | Site name | Position (lat, long) | Distance from WWV | Elevation | Reason for selection |
 |---|---|---:|---:|---|
-| Frederick, CO | 40.10452, -104.94304 | 64.3 km | [ ] | Clear line of sight; a reference point ahead of the terrain |
-| Lafayette, CO | 39.98167, -105.06296 | 77.5 km | [ ] | Clear line of sight |
-| Arvada, CO | 39.82675, -105.08259 | 94.8 km | [ ] | The last point before North Table Mountain |
-| Golden, CO: CSM intramural field | 39.74992, -105.22568 | 104.4 km | [ ] | The predicted shadow area; adjacent to the laboratory |
-| Golden, CO: Lookout Mountain Mines "M" pullout | 39.74621, -105.23974 | 105.0 km | [ ] | The same distance, but at a higher elevation |
+| Frederick, CO | 40.10452, -104.94304 | 64.3 km | 1,515 m | Clear line of sight; a reference point ahead of the terrain |
+| Lafayette, CO | 39.98167, -105.06296 | 77.5 km | 1,590 m | Clear line of sight |
+| Arvada, CO | 39.82675, -105.08259 | 94.8 km | 1,710 m | The last point before North Table Mountain |
+| Golden, CO: CSM intramural field | 39.74992, -105.22568 | 104.4 km | 1,790 m | The predicted shadow area; adjacent to the laboratory |
+| Golden, CO: Lookout Mountain Mines "M" pullout | 39.74621, -105.23974 | 105.0 km | 2,060 m | Close to the lab but at a higher elevation. |
+
+Elevation values are from GPS Elevation Finder, a web interface for the
+Open-Elevation API. Open-Elevation uses SRTM data with approximately 30 m
+horizontal resolution.
 
 ## Test methodology
 
 ### Equipment
 
-- RTL-SDR receiver, [ add the model ], operated in direct sampling mode
+- RTL-SDR receiver, RTL-SDR V3 RTL2832U, operated in direct sampling mode
 - Radioddity HF-009 portable HF antenna
 - Radioddity PL-259-M 5 m coaxial cable
 - SMA-F to BNC-M to BNC-F to PL-259-M adapters
@@ -68,10 +72,10 @@ The RTL-SDR does not tune below approximately 24 MHz in its normal mode. It was 
 ### Procedure
 
 1. Calibrate the frequency of the RTL-SDR against the Bodnar GPS-disciplined 10 MHz source.
-2. Set up the HF-009 antenna at a height of [ add the height ] above ground level. Connect it to the receiver.
+2. Set up the HF-009 antenna at a height of 3.7 m above ground level. Connect it to the receiver.
 3. Set SDR# to 5 MHz.
 4. Set the gain to 20.7 dB, the bandwidth to 10 kHz, and the sample rate to 2.4 MS/s. Select AM modulation.
-5. Measure the signal-to-noise ratio and the absolute delivered power.
+5. Measure the signal-to-noise ratio.
 6. Record the I/Q samples.
 7. Demodulate the signal and listen for the WWV voice announcements.
 
@@ -81,25 +85,52 @@ The HF-009 antenna gives the RTL-SDR access to the 5 MHz band. The voice announc
 
 | Item | Value |
 |---|---|
-| Date of the survey | [ ] |
-| Time of day, with time zone | [ ] |
-| Weather | [ ] |
-| Solar flux / K index, if recorded | [ ] |
-
-The ionosphere changes between day and night, with the season, and with solar activity. These values are necessary to interpret the results.
+| Date of the survey | 2026-07-25 |
+| Time of day, with time zone | 10:56-14:34 MDT |
+| Weather |38.3 °C, Clear Skies, 14% Humidity |
 
 ## Results
 
-[ Add the measurement table here. ]
+|Location (Name)         |Location (Latitude/Longitude)        |SNR (dB)|Time of Record|Gain (dB)|Bandwidth (Hz)|Modulation|Sample Rate (MSPS)|Frequency (MHz)|WWV Voice Audible|
+|------------------------|--------------------------------------|--------|--------------|---------|--------------|----------|------------------|---------------|---|
+|Frederick, CO     |40.10452, -104.94304|45.50   |10:56   |20.70    |10,000.00     |AM        |2.40              |5.000000       |Yes|
+|Lafayette, CO       |39.98166, -105.06295 |40.50   |12:28   |20.70    |10,000.00     |AM        |2.40              |5.000000       |Yes|
+|Arvada, CO |39.82674, -105.08258 |37.00   |13:15    |20.70    |10,000.00     |AM        |2.40              |5.000000       |Yes|
+|Golden, CO Mines Intramural Field 1|39.74992, -105.22568|22.00   |14:02    |20.70    |10,000.00     |AM        |2.40              |5.000000       |No|
+|Golden, CO Mines M Lookout         |39.74620, -105.23974|44.00   |14:34    |20.70    |10,000.00     |AM        |2.40              |5.000000       |Yes|
 
 ## Conclusion
 
-[ Add the answer to the question: is the laboratory in a dead zone? ]
+The signal-to-noise ratio decreased with distance at the first three sites:
+45.5 dB at Frederick, 40.5 dB at Lafayette, and 37.0 dB at Arvada.
+
+At the Mines intramural field the SNR was 22.0 dB. That is 15 dB below
+Arvada, which is 10 km closer to WWV.
+
+The Mines M lookout is 600 m from the intramural field and 270 m higher.
+The SNR there was 44.0 dB, an increase of 22 dB. The two measurements are
+32 minutes apart. Neither distance nor a change in the ionosphere can
+explain that difference.
+
+The WWV voice announcement was audible at all sites except the intramural
+field. The SNR value measures the carrier. In an AM transmission the voice
+sidebands are approximately 20 dB below the carrier. A carrier SNR of
+22.0 dB therefore leaves the voice at the noise level. This is consistent
+with the SNR measurement.
+
+We conclude that North Table Mountain creates an RF shadow over the
+laboratory at 5 MHz. The signal is present but strongly attenuated. This
+agrees with the Radio Mobile prediction.
+
+The Microwave Photonics Laboratory is examining options to receive the
+signal. No decision was made at the date of this report.
 
 ## Limitations
 
-- [ Add what the study did not measure ]
-- [ Add what could change the result ]
+- This did not fully account for device sensitivity, but the RTL-SDR showed very strong reception at the same distance but elevated over North Table Mountain, so we are comfortable with the conclusion.
+- Antenna setup, receiver sensitivity, and weather are all factors that could impact the results. A retest with a different antenna setup may be conducted in the future.
+- The measurements are over 3 hours and 38 minutes. Ionospheric conditions changed in that time. The comparison of the two Golden sites is not affected, because those two measurements are 32 minutes apart.
+- The solar flux and the K index were not recorded.
 
 ## Data availability
 
@@ -110,3 +141,5 @@ The raw I/Q recordings are approximately 1.5 GB per site. They are too large for
 - [NIST WWV](https://www.nist.gov/pml/time-and-frequency-division/time-distribution/radio-station-wwv)
 - [Radio Mobile, by Roger Coude (VE2DBE)](https://www.ve2dbe.com/english1.html)
 - [Scadacore RF Path](https://www.scadacore.com/tools/rf-path/)
+- [SDR#, by Airspy](https://airspy.com/download/)
+- [Open-Elevation](https://open-elevation.com/)
