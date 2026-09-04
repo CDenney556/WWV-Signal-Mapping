@@ -28,11 +28,11 @@ We used Radio Mobile, a free RF propagation simulation and mapping program by Ro
 
 *Figure 1. The settings used for every Radio Mobile simulation in this study.*
 
-![Radio Mobile signal overlay at the state scale](images/radio-mobile-heatmap-state.png)
+![Radio Mobile signal overlay at the state scale](images/radio-mobile-heatmap-golden.png)
 
 *Figure 2. The Radio Mobile signal simulation overlay at the state scale.*
 
-![Radio Mobile signal overlay at the city scale](images/radio-mobile-heatmap-golden.png)
+![Radio Mobile signal overlay at the city scale](images/radio-mobile-heatmap-state.png)
 
 *Figure 3. The Radio Mobile signal simulation overlay at the city scale. This result points toward an RF shadow, or dead zone, created by North Table Mountain.*
 
